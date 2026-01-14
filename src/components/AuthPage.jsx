@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Login from './Login'
 import Signup from './Signup'
 
-const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000/api'
+const API_BASE = import.meta.env.VITE_API_BASE || 'https://crm-backend-zex5.onrender.com/api'
 
 export default function AuthPage({ onLoggedIn }) {
   const [activeTab, setActiveTab] = useState('login')

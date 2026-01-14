@@ -38,7 +38,7 @@ const KanbanBoard = ({ session }) => {
     try {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:4000/api/tasks?employee_id=${session.employeeId}`
+        `https://crm-backend-zex5.onrender.com/api/tasks?employee_id=${session.employeeId}`
       );
 
       if (!response.ok) {
@@ -58,7 +58,7 @@ const KanbanBoard = ({ session }) => {
 
   const fetchAvailableTechnicians = async () => {
     try {
-      const response = await fetch('http://localhost:4000/api/installation-technicians');
+      const response = await fetch('https://crm-backend-zex5.onrender.com/api/installation-technicians');
       if (!response.ok) {
         throw new Error('Failed to fetch technicians');
       }
@@ -74,7 +74,7 @@ const KanbanBoard = ({ session }) => {
     try {
       setUpdatingTaskId(taskId);
       const response = await fetch(
-        `http://localhost:4000/api/tasks/${taskId}/status`,
+        `https://crm-backend-zex5.onrender.com/api/tasks/${taskId}/status`,
         {
           method: 'PATCH',
           headers: {
@@ -134,7 +134,7 @@ const KanbanBoard = ({ session }) => {
       // Fetch existing documents
       try {
         const response = await fetch(
-          `http://localhost:4000/api/register-applicant/${task.application_id}`
+          `https://crm-backend-zex5.onrender.com/api/register-applicant/${task.application_id}`
         );
         if (response.ok) {
           const docs = await response.json();
@@ -189,7 +189,7 @@ const KanbanBoard = ({ session }) => {
       formData.append('intent_document', intentDocumentFile);
 
       const response = await fetch(
-        `http://localhost:4000/api/register-applicant/${selectedTask.application_id}/intent`,
+        `https://crm-backend-zex5.onrender.com/api/register-applicant/${selectedTask.application_id}/intent`,
         {
           method: 'PATCH',
           body: formData,
@@ -205,7 +205,7 @@ const KanbanBoard = ({ session }) => {
 
       // Refresh the documents
       const docsResponse = await fetch(
-        `http://localhost:4000/api/register-applicant/${selectedTask.application_id}`
+        `https://crm-backend-zex5.onrender.com/api/register-applicant/${selectedTask.application_id}`
       );
       if (docsResponse.ok) {
         const docs = await docsResponse.json();
@@ -239,7 +239,7 @@ const KanbanBoard = ({ session }) => {
       formData.append('commission_document', commissionDocumentFile);
 
       const response = await fetch(
-        `http://localhost:4000/api/register-applicant/${selectedTask.application_id}/commission`,
+        `https://crm-backend-zex5.onrender.com/api/register-applicant/${selectedTask.application_id}/commission`,
         {
           method: 'PATCH',
           body: formData,
@@ -255,7 +255,7 @@ const KanbanBoard = ({ session }) => {
 
       // Refresh the documents
       const docsResponse = await fetch(
-        `http://localhost:4000/api/register-applicant/${selectedTask.application_id}`
+        `https://crm-backend-zex5.onrender.com/api/register-applicant/${selectedTask.application_id}`
       );
       if (docsResponse.ok) {
         const docs = await docsResponse.json();
@@ -417,7 +417,7 @@ const KanbanBoard = ({ session }) => {
     try {
       setSavingInstallationDetails(true);
 
-      const response = await fetch('http://localhost:4000/api/installation-details', {
+      const response = await fetch('https://crm-backend-zex5.onrender.com/api/installation-details', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -501,7 +501,7 @@ const KanbanBoard = ({ session }) => {
         formData.append('plan_commissioning_form', fileInputs.plan_commissioning_form);
       }
 
-      const response = await fetch('http://localhost:4000/api/register-applicant', {
+      const response = await fetch('https://crm-backend-zex5.onrender.com/api/register-applicant', {
         method: 'POST',
         body: formData,
       });
@@ -515,7 +515,7 @@ const KanbanBoard = ({ session }) => {
 
       // Refresh the documents
       const docsResponse = await fetch(
-        `http://localhost:4000/api/register-applicant/${selectedTask.application_id}`
+        `https://crm-backend-zex5.onrender.com/api/register-applicant/${selectedTask.application_id}`
       );
       if (docsResponse.ok) {
         const docs = await docsResponse.json();
@@ -999,7 +999,7 @@ const KanbanBoard = ({ session }) => {
                           <div className="mt-2 flex items-center gap-2">
                             <span className="text-xs text-green-600">✓ Uploaded</span>
                             <a 
-                              href={`http://localhost:4000${registerApplicantDocs.application_form_url}`}
+                              href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.application_form_url}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs text-blue-600 hover:underline"
@@ -1024,7 +1024,7 @@ const KanbanBoard = ({ session }) => {
                           <div className="mt-2 flex items-center gap-2">
                             <span className="text-xs text-green-600">✓ Uploaded</span>
                             <a 
-                              href={`http://localhost:4000${registerApplicantDocs.feasibility_form_url}`}
+                              href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.feasibility_form_url}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs text-blue-600 hover:underline"
@@ -1049,7 +1049,7 @@ const KanbanBoard = ({ session }) => {
                           <div className="mt-2 flex items-center gap-2">
                             <span className="text-xs text-green-600">✓ Uploaded</span>
                             <a 
-                              href={`http://localhost:4000${registerApplicantDocs.subsidy_form_url}`}
+                              href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.subsidy_form_url}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs text-blue-600 hover:underline"
@@ -1074,7 +1074,7 @@ const KanbanBoard = ({ session }) => {
                           <div className="mt-2 flex items-center gap-2">
                             <span className="text-xs text-green-600">✓ Uploaded</span>
                             <a 
-                              href={`http://localhost:4000${registerApplicantDocs.plan_commissioning_form_url}`}
+                              href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.plan_commissioning_form_url}`}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-xs text-blue-600 hover:underline"
@@ -1154,7 +1154,7 @@ const KanbanBoard = ({ session }) => {
                         <div className="mt-3 flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
                           <span className="text-xs text-green-600 font-semibold">✓ Uploaded</span>
                           <a 
-                            href={`http://localhost:4000${registerApplicantDocs.intent_document_url}`}
+                            href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.intent_document_url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-xs text-blue-600 hover:underline"
@@ -1221,7 +1221,7 @@ const KanbanBoard = ({ session }) => {
                         <div className="mt-3 flex items-center gap-2 p-3 bg-green-50 rounded-lg border border-green-200">
                           <span className="text-xs text-green-600 font-semibold">✓ Uploaded</span>
                           <a 
-                            href={`http://localhost:4000${registerApplicantDocs.commission_doc_url}`}
+                            href={`https://crm-backend-zex5.onrender.com${registerApplicantDocs.commission_doc_url}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="text-xs text-blue-600 hover:underline"
